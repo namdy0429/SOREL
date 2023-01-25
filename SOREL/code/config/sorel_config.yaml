@@ -1,0 +1,105 @@
+sorel_config:
+  # Data
+  data_path: '/SOREL/data/'
+  train_data: 'labeled_data.json'
+  large_test_data: 'larger_no_label_data.json'
+
+
+  # Model
+  pretrain_model:         # location of pretrained model (e.g., '/SOREL/code/logs/1/BERT_BiLSTM_pos_final_epoch')
+  test_model: '/SOREL/code/logs/1/BERT_BiLSTM_pos_final_epoch'
+  bert_model: "bert-base-uncased"
+
+
+  # Output
+  result_filename: "result.txt"
+  test_result_filename: "test.txt"
+  test_result_json: "test.json"
+
+
+  # Training
+  lr: 0.00001
+  max_epoch: 1          # Max number of training epochs
+  weight_decay: 1e-5
+  input_dropout: 0.4
+  batch_size: 32
+  seed: 33
+
+  # When it is set to be True, do not stop training unless it hits [max_epoch].
+  # If False, training stops when the validation loss does not decrease for [decreasing_limit] epochs.
+  nonstop_training: True
+  decreasing_limit: 20
+
+
+  # Test & Validation
+  validation_period: 1    # # of training epochs until it conducts validation
+  val_ratio: 0.3          # used to determine the ratio of validation set when it's not doing 5-fold CV.
+  log_val_example: False  # whether to log validation examples (SO post title, sentences, and predictions).
+  use_extensive_combination_for_val: False
+  test_epoch: 2
+
+  # A variable for 5-fold validation.
+  # 0-4: index of fold to use for the validation
+  # 5: no validation, just training
+  fold_val_idx: 0
+
+
+  # loss = loss_re_coeff ∗ re loss + sep loss
+  # See VI.B for details.
+  loss_re_coeff: 0.05
+
+
+  # RE parameters
+  no_rel_ratio: 5       # Ratio of negative examples to include when there is 0 positive pair in the batch.
+  reg_matching_ratio: 2 # Ratio of negative examples to include when there are positive pair(s) in the batch.
+  val_theta: 0.5        # Threshold to consider a prediction as True
+
+
+  # SEP parameters
+  val_sentence_theta: 0.5 # Threshold to consider a prediction as True
+
+
+  # A variable for the data size ablation in Sec VI.C.
+  # 'full', '2/3', '1/3', '1/10'
+  size_ablation: 'full'
+
+
+  # Variables for the model component ablation in Sec VI.C.
+  use_bert: True      # BERT
+  use_bilinear: True  # BiLSTM
+  freeze_bert: True   # Finetune
+
+
+  # Other experimental conditions for training
+  teacher_forcing: False
+  lr_warm_up: False
+  num_warmup: 30
+  use_single_rnn: False
+  use_re_rnn: False
+  use_sep_rnn: True
+
+
+  # Model parameters
+  re_embedding: 200   # Dimension of relation embedding
+  num_layers: 1
+  coref_size: 20      # Dimension of coref embedding
+  dropout: 0
+
+
+  # For larger-test, whether to exclude duplicated API pairs in ther esults
+  test_no_dup: True
+
+
+  # DO NOT CHANGE until you fully understand the code:
+  # These variables created for the future extension of SOREL
+  # or inherited from the dependencies that SOREL depends on.
+  IGNORE_INDEX: -100
+  so_relation_num: 2
+  mask_id: 103    # bert-base-uncased
+  max_length: 512
+  h_t_limit: 1800
+  sent_limit: 40
+  model: "BERT_BiLSTM_pos"
+  vocab_size: 80000
+  input_size: 768
+  hidden_size: 768
