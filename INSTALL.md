@@ -1,6 +1,6 @@
 # INSTALL
 
-## Chrome plugin used for the user study
+## Chrome plugin used for the user study: [`/SOREL/Plugin`](https://github.com/namdy0429/SOREL/tree/main/Plugin)
 To use the plugin, you have to set up Chrome as a developer mode.
 
 > Click the Chrome menu icon and select Extensions from the Tools menu. Ensure that the "Developer mode" checkbox in the top right-hand corner is checked.
@@ -10,7 +10,7 @@ You can find more detailed instructions from [FAQ of Google Chrome Developers Do
 Now, you can load the plugin by clicking "Load unpacked" buttong in the top left-hand corner, and load the plugin (`Plugin/`). Then, you can enable the plugin by clicking the toggle button in the bottom right-hand corner of the plugin box.
 
 
-## User study analysis replication
+## User study analysis replication: [`/SOREL/Study`](https://github.com/namdy0429/SOREL/tree/main/Study)
 
 Our statistical analysis on the user study results were written in R, using Jupyter Notebook.
 To run the study analysis script, you need to be able to run R-notebook.
@@ -20,10 +20,21 @@ If not, you can use a ready-to-run Docker image to launch Jupyter Notebook envir
 Downloading the jupyter/R-notebook docker image will require ~1G of memory space.
 
 ```
-$ docker run -p 8888:8888 --name notebook -v /home/dayenam/Documents/Research/SO/ICSE/Artifacts:/home/dayenam/Artifacts jupyter/r-notebook
+$ docker run -p 8888:8888 --name notebook -v [path-to-Artifacts]/Study/:/home/jovyan/work jupyter/r-notebook
 ```
 
-## SOREL implementation with Stack Overflow data labeled with comparable API methods
+Then, you will see the following output:
+
+```
+    To access the server, open this file in a browser:
+        file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
+    Or copy and paste one of these URLs:
+        http://a54a3d055112:8888/lab?token=d76cc9282c7ce986cbdf2e1f35a81321a58ae0f773ea7a19
+     or http://127.0.0.1:8888/lab?token=d76cc9282c7ce986cbdf2e1f35a81321a58ae0f773ea7a19
+```
+Click the link to open the Notebook interface. You can find [`Regression.ipynb`](https://github.com/namdy0429/SOREL/blob/main/Study/Regression.ipynb) under `/work/` directory.
+
+## SOREL implementation with Stack Overflow data labeled with comparable API methods: [`/SOREL/SOREL/`](https://github.com/namdy0429/SOREL/tree/main/SOREL)
 
 To train and test SOREL implementation, you need to be able to run PyTorch code with a GPU.
 If you have PyTorch set up, you should be able to run the code after installing necessary Python packages.
@@ -130,7 +141,7 @@ Read 604 documents, 0 with relation
 You can find the results under `/SOREL/code/logs/3`.
 
 
-You have tried the whole pipeline of SOREL, and you can update the config file (`/SOREL/code/config/sorel_config.yaml`) to further explore it.
+You have tried the whole pipeline of SOREL, and you can update the config file ([`/SOREL/code/config/sorel_config.yaml`](https://github.com/namdy0429/SOREL/blob/main/SOREL/code/config/sorel_config.yaml)) to further explore it.
 Detailed explanations for configuration variables are includedi n the config file.
 All of your training and testing results of SOREL will be stored unter `/SOREL/code/logs/`, so please delete the ones that are not necessary to prevent them to take all of your spaces.
 
