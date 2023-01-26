@@ -6,7 +6,7 @@ Daye Nam, Brad Myers, Bogdan Vasilescu, and Vincent Hellendoorn, "Improving API 
 
 ## Artifacts
 
-Archived version of the artifacts and the documentation can be found here: 
+Archived version of the artifacts and the documentation can be found here: [https://doi.org/10.5281/zenodo.7570586](https://doi.org/10.5281/zenodo.7570586)
 
 There are three main components in this repository.
 
