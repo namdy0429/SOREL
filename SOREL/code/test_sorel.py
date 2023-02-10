@@ -13,7 +13,7 @@ torch.manual_seed(33)
 np.random.seed(33)
 random.seed(33)
 
-ex = Experiment()
+ex = Experiment(save_git_info=False)
 ex.add_config('config/sorel_config.yaml')
 
 ex.observers.append(FileStorageObserver("./logs"))
@@ -24,7 +24,7 @@ def sorel(_run, _config, sorel_config):
     model = {
         'BERT_BiLSTM_pos': models.BERT_BiLSTM_pos,
     }
-    
+
     trainer = Trainer(sorel_config)
     trainer.load_test_data()
 
