@@ -42,14 +42,14 @@ If you have PyTorch set up, you should be able to run the code after installing 
 If not, you can use a docker image to set up the environment. Downloading the transformer docker image will require ~15G of space.
 
 ```
-$ docker pull huggingface/transformers-pytorch-gpu
+$ docker pull huggingface/transformers-pytorch-gpu:4.21.0
 ```
 
 Once you have the docker image, you can run the container with the following command:
 
 
 ```
-$ docker run --rm -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0 -v [path-to-Artifacts]/SOREL/:/SOREL huggingface/transformers-pytorch-gpu
+$ docker run --rm -it --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0 -v [path-to-Artifacts]/SOREL/:/SOREL huggingface/transformers-pytorch-gpu:4.21.0
 ```
 
 - `--rm`: Automatically remove the container when it exits.
